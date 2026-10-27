@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { WalletState, submitMicropayment, CONTRACT_ID, DEMO_DEV_ACCOUNT } from '../lib/stellar-client';
-import { Play, CheckCircle2, AlertCircle, ArrowRight, ShieldCheck, Terminal, ExternalLink } from 'lucide-react';
+import { Play, CheckCircle2, AlertCircle, ShieldCheck, Terminal, ExternalLink } from 'lucide-react';
 
 interface ApiPlaygroundProps {
   wallet: WalletState;

@@ -13,7 +13,7 @@ import {
   DEMO_DEV_ACCOUNT,
   fetchAccountBalances,
 } from './lib/stellar-client';
-import { Terminal, PlusCircle, Layers, BarChart3, Code2, ShieldAlert, Sparkles, ArrowRight } from 'lucide-react';
+import { Terminal, PlusCircle, Layers, BarChart3, Code2, ShieldAlert, Sparkles } from 'lucide-react';
 
 export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'playground' | 'register' | 'tiers' | 'analytics' | 'sdk' | 'architecture'>('playground');

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { WalletState, CONTRACT_ID, TESTNET_RPC, NETWORK_PASSPHRASE, DEMO_DEV_ACCOUNT } from '../lib/stellar-client';
 import { rpc, Contract, Keypair, TransactionBuilder, nativeToScVal } from '@stellar/stellar-sdk';
-import { Layers, Check, ExternalLink, Zap } from 'lucide-react';
+import { Check, Zap } from 'lucide-react';
 
 interface TierManagerProps {
   wallet: WalletState;

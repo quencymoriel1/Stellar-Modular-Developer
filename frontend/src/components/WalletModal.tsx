@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { WalletState, DEMO_DEV_ACCOUNT } from '../lib/stellar-client';
+import { WalletState } from '../lib/stellar-client';
 import { Wallet, Key, ShieldCheck, X } from 'lucide-react';
 
 interface WalletModalProps {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { requestFriendbotFunding, DEMO_DEV_ACCOUNT } from '../lib/stellar-client';
-import { Droplets, CheckCircle, AlertCircle, X, ExternalLink } from 'lucide-react';
+import { Droplets, CheckCircle, AlertCircle, X } from 'lucide-react';
 
 interface FaucetModalProps {
   isOpen: boolean;

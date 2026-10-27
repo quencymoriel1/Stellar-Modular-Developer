@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, X, Shield, Cpu, Zap, Lock } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 
 export const ArchitectureView: React.FC = () => {
   const comparisons = [
