@@ -1,0 +1,17 @@
+{
+  "name": "@stellar-modular/shared",
+  "version": "1.0.0",
+  "description": "Shared types, x402 specifications, and Soroban helpers for Stellar Modular Developer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^12.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
