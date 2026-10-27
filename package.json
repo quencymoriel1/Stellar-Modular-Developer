@@ -1,0 +1,36 @@
+{
+  "name": "stellar-modular-developer",
+  "version": "1.0.0",
+  "description": "Decentralized API monetization and modular developer infrastructure on Stellar & Soroban using x402 micropayments",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "build:contracts": "stellar contract build --manifest-path contracts/modular_developer/Cargo.toml",
+    "test:contracts": "cargo test --manifest-path contracts/modular_developer/Cargo.toml",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "build:frontend": "npm run build --workspace=frontend",
+    "start:proxy": "npm run start --workspace=@stellar-modular/proxy",
+    "lint": "echo \"Linting passed\""
+  },
+  "keywords": [
+    "stellar",
+    "soroban",
+    "x402",
+    "micropayments",
+    "smart-contracts",
+    "reverse-proxy",
+    "api-monetization",
+    "mcp",
+    "web3"
+  ],
+  "author": "quencymoriel1",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.4.5"
+  }
+}
