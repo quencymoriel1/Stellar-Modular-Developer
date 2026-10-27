@@ -1,0 +1,29 @@
+{
+  "name": "@stellar-modular/cli",
+  "version": "1.0.0",
+  "description": "Command-line tool for Stellar Modular Developer to monetize, manage, and consume APIs on Stellar",
+  "bin": {
+    "smd": "dist/bin.js",
+    "stellar-modu": "dist/bin.js"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/bin.js"
+  },
+  "dependencies": {
+    "@stellar-modular/proxy": "^1.0.0",
+    "@stellar-modular/shared": "^1.0.0",
+    "@stellar/stellar-sdk": "^12.3.0",
+    "commander": "^12.1.0",
+    "inquirer": "^9.2.20",
+    "ora": "^5.4.1",
+    "chalk": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.4.5"
+  }
+}
