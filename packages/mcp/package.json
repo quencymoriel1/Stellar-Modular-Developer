@@ -1,0 +1,19 @@
+{
+  "name": "@stellar-modular/mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) server enabling AI agents to autonomously discover and pay for APIs on Stellar",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@stellar-modular/shared": "^1.0.0",
+    "@stellar/stellar-sdk": "^12.3.0",
+    "undici": "^6.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.4.5"
+  }
+}
