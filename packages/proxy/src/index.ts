@@ -10,7 +10,7 @@ if (require.main === module) {
   const host = process.env.HOST || '0.0.0.0';
   const server = buildProxyServer({ port, host });
 
-  server.listen({ port, host }, (err, address) => {
+  server.listen({ port, host }, (err: Error | null, address: string) => {
     if (err) {
       server.log.error(err);
       process.exit(1);

@@ -43,8 +43,19 @@ jobs:
       - name: Install Monorepo Dependencies
         run: npm ci
 
-      - name: Build TypeScript Packages & Frontend
-        run: npm run build
+      - name: Build Shared Package
+        run: npm run build:shared
+
+      - name: Build Proxy Package
+        run: npm run build:proxy
+
+      - name: Build CLI & MCP
+        run: |
+          npm run build:cli
+          npm run build:mcp
+
+      - name: Build Frontend Dashboard
+        run: npm run build:frontend
 
       - name: Lint Workspace
         run: npm run lint

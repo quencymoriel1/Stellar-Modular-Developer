@@ -8,11 +8,15 @@
     "frontend"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
+    "build:shared": "npm run --workspace=@stellar-modular/shared build",
+    "build:proxy": "npm run --workspace=@stellar-modular/proxy build",
+    "build:cli": "npm run --workspace=@stellar-modular/cli build",
+    "build:mcp": "npm run --workspace=@stellar-modular/mcp build",
+    "build:frontend": "npm run --workspace=frontend build",
+    "build": "npm run build:shared && npm run build:proxy && npm run build:cli && npm run build:mcp && npm run build:frontend",
     "build:contracts": "stellar contract build --manifest-path contracts/modular_developer/Cargo.toml",
     "test:contracts": "cargo test --manifest-path contracts/modular_developer/Cargo.toml",
     "dev:frontend": "npm run dev --workspace=frontend",
-    "build:frontend": "npm run build --workspace=frontend",
     "start:proxy": "npm run start --workspace=@stellar-modular/proxy",
     "lint": "echo \"Linting passed\""
   },
