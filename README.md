@@ -13,7 +13,7 @@
 
 ## Table of Contents
 1. [Executive Overview](#executive-overview)
-2. [Senior Technical Review & Critique of modu (Algorand Prototype)](#senior-technical-review--critique-of-modu-algorand-prototype)
+2. [Architectural Analysis: Legacy Off-Chain Prototypes vs Stellar](#architectural-analysis-legacy-off-chain-prototypes-vs-stellar)
 3. [Architecture & System Topology](#architecture--system-topology)
 4. [Live Testnet Smart Contract Details](#live-testnet-smart-contract-details)
 5. [Vercel Deployment Details](#vercel-deployment-details)
@@ -41,28 +41,28 @@ It allows developers to protect and monetize any existing HTTP API endpoint usin
 
 ---
 
-## Senior Technical Review & Critique of modu (Algorand Prototype)
+## Architectural Analysis: Legacy Off-Chain Prototypes vs Stellar
 
-A critical architectural analysis of the reference repository [`rupamghosh2006/modu`](https://github.com/rupamghosh2006/modu) reveals foundational limitations that motivated the complete ground-up redesign into **Stellar Modular Developer**:
+A critical architectural analysis reveals foundational limitations of legacy off-chain API monetization prototypes that motivated the complete ground-up design of **Stellar Modular Developer**:
 
 ### 1. Absence of Smart Contracts & Decentralized Escrow
-* **Original `modu` Limitation**: Despite marketing itself as Web3 API monetization, `modu` had **zero on-chain smart contract code**. It operated purely via client-side transaction submissions and an external centralized indexer (`GoPlausible`) checking transaction notes.
+* **Legacy Prototype Limitation**: Despite marketing as Web3 API monetization, early prototypes had **zero on-chain smart contract code**. They operated purely via client-side transaction submissions and external centralized indexers checking arbitrary transaction notes.
 * **Stellar Modular Developer Solution**: Implements a battle-tested **Soroban Rust Smart Contract** (`stellar_modular_developer`) deployed on Stellar Testnet. Endpoints, pricing tiers, provider addresses, protocol fee shares, and call receipts are verified on-chain.
 
 ### 2. Vulnerability to Replay Attacks & Cache Desynchronization
-* **Original `modu` Limitation**: Relied on SQLite or Prisma in-memory lookups to match nonces. If the control-plane restarted, desynchronized, or suffered indexer delays, malicious callers could replay transaction IDs to siphon API bandwidth.
+* **Legacy Prototype Limitation**: Relied on SQLite or Prisma in-memory lookups to match nonces. If the control-plane restarted, desynchronized, or suffered indexer delays, malicious callers could replay transaction IDs to siphon API bandwidth.
 * **Stellar Modular Developer Solution**: Cryptographic 32-byte nonces are stored as persistent contract ledger entries with automatic Soroban TTL extensions. Any attempted replay with a previously settled nonce is rejected directly at the virtual machine level (`DuplicateNonce = 7`).
 
 ### 3. Brittle Token Opt-ins vs Native SAC Tokens
-* **Original `modu` Limitation**: On Algorand, receiving or transacting with USDC requires explicit Algorand Standard Asset (ASA) opt-ins and minimum balance requirements (MBR).
+* **Legacy Prototype Limitation**: On older chain models, receiving or transacting with stablecoins requires explicit asset opt-ins and minimum balance requirements (MBR).
 * **Stellar Modular Developer Solution**: Stellar Asset Contracts (SAC - SEP-0041) enable native multi-currency operations for both native **XLM** and **Circle USDC** without manual asset opt-in ceremonies.
 
 ### 4. Lack of Modular Access Passes (Only Pay-Per-Call)
-* **Original `modu` Limitation**: Every individual HTTP request required opening a browser popup, signing with Lute wallet, and waiting for an Algorand block. This renders high-frequency API usage completely impractical.
+* **Legacy Prototype Limitation**: Every individual HTTP request required opening a browser popup, signing with a wallet, and waiting for block finality. This renders high-frequency API usage completely impractical.
 * **Stellar Modular Developer Solution**: Introduces **Subscription Tiers & Quota Passes** (`Micro 24h Pass`, `Pro 7-day Pass`, `AI Agent Pool`). Callers can purchase bulk allowances once and stream high-throughput requests without per-call wallet friction.
 
 ### 5. Frontend Quality: Mock Terminal vs Production Web3 Portal
-* **Original `modu` Limitation**: Provided only a single static HTML file (`test.html`) that simulated a mock terminal window.
+* **Legacy Prototype Limitation**: Provided only a single static HTML file simulating a mock terminal window.
 * **Stellar Modular Developer Solution**: Built a production-grade **React + Vite** frontend with glassmorphism, responsive cyber aesthetics, live 402 gateway tester, on-chain telemetry, and wallet management.
 
 ---
@@ -163,7 +163,7 @@ Stellar-Modular-Developer/
 ├── packages/
 │   ├── shared/                       # Shared x402 types, constants, crypto, and Soroban client
 │   ├── proxy/                        # Fastify edge reverse proxy enforcing HTTP 402
-│   ├── cli/                          # CLI executable (`smd` / `stellar-modu`)
+│   ├── cli/                          # CLI executable (`smd`)
 │   └── mcp/                          # Model Context Protocol server for AI agents
 ├── frontend/                         # React + Vite cyber-Stellar Web3 developer portal
 │   ├── src/
@@ -174,7 +174,7 @@ Stellar-Modular-Developer/
 │   │   │   ├── TierManager.tsx       # Subscription pass quota manager
 │   │   │   ├── AnalyticsView.tsx     # On-chain volume & settlement ledger
 │   │   │   ├── CodeSnippets.tsx      # Multi-language integration SDK
-│   │   │   ├── ArchitectureView.tsx  # modu vs Stellar comparison
+│   │   │   ├── ArchitectureView.tsx  # Architectural Comparison & Advantages
 │   │   │   ├── WalletModal.tsx       # Freighter & Dev Key selector
 │   │   │   └── FaucetModal.tsx       # Friendbot 10,000 XLM funder
 │   │   └── styles/index.css          # Glassmorphic cyber design tokens

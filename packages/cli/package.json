@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Command-line tool for Stellar Modular Developer to monetize, manage, and consume APIs on Stellar",
   "bin": {
-    "smd": "dist/bin.js",
-    "stellar-modu": "dist/bin.js"
+    "smd": "dist/bin.js"
   },
   "main": "dist/index.js",
   "scripts": {

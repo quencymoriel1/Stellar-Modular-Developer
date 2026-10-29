@@ -144,7 +144,7 @@ export const App: React.FC = () => {
               { id: 'tiers', label: 'Subscription Passes', icon: Layers },
               { id: 'analytics', label: 'Telemetry', icon: BarChart3 },
               { id: 'sdk', label: 'Developer SDK', icon: Code2 },
-              { id: 'architecture', label: 'modu vs Stellar', icon: ShieldAlert },
+              { id: 'architecture', label: 'Architecture Comparison', icon: ShieldAlert },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
