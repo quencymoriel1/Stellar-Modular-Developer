@@ -301,6 +301,9 @@ To enable Claude Desktop, Cursor, or Gemini to autonomously consume and settle p
 }
 ```
 
+> [!WARNING]
+> **Security Notice**: Always supply your own funded Stellar testnet secret key via environment variables (`STELLAR_AGENT_SECRET_KEY`). Do not commit real keys to git. Note that previously exposed testnet throwaway keys in prior commit history are revoked and deprecated.
+
 ### Available MCP Agent Tools
 - `stellar_list_monetized_services`: Autonomously discovers registered APIs, latency stats, and costs in XLM/USDC.
 - `stellar_pay_and_call_endpoint`: Executes the complete probe → 402 challenge → Soroban signing → stream reception workflow.
