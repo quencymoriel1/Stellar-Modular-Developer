@@ -7,7 +7,11 @@ export async function callCommand(targetUrl: string, options: any) {
   console.log(chalk.cyan.bold('\n🌐 Stellar Modular Developer — Automated x402 Micropayment Client'));
   console.log(chalk.gray(`Target: ${targetUrl}\n`));
 
-  const secretKey = options.secret || process.env.STELLAR_DEPLOYER_SECRET_KEY || 'SCZEAKU3JHHO6MFEUYVDRD35367FXUP5GPF4DBXSX76DAZFHHTUYMUGG';
+  const secretKey = options.secret || process.env.STELLAR_DEPLOYER_SECRET_KEY;
+  if (!secretKey) {
+    console.error(chalk.red('Error: Please provide a secret key using --secret or set STELLAR_DEPLOYER_SECRET_KEY in your environment.'));
+    process.exit(1);
+  }
   const keypair = Keypair.fromSecret(secretKey);
 
   console.log(chalk.blue(`[1/3] Probing endpoint...`));

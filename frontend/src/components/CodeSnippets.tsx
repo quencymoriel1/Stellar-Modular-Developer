@@ -85,7 +85,7 @@ curl -X GET https://stellar-modular.dev/p/weather_api \\
       "command": "node",
       "args": ["packages/mcp/dist/index.js"],
       "env": {
-        "STELLAR_AGENT_SECRET_KEY": "SCZEAKU3JHHO6MFEUYVDRD35367FXUP5GPF4DBXSX76DAZFHHTUYMUGG",
+        "STELLAR_AGENT_SECRET_KEY": "S...YOUR_STELLAR_TESTNET_SECRET_KEY...",
         "STELLAR_RPC_URL": "https://soroban-testnet.stellar.org"
       }
     }

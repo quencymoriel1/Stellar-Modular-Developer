@@ -8,8 +8,13 @@ export class StellarAgentTools {
 
   constructor(secretKey?: string) {
     this.helper = new SorobanHelper();
-    const secret = secretKey || process.env.STELLAR_AGENT_SECRET_KEY || 'SCZEAKU3JHHO6MFEUYVDRD35367FXUP5GPF4DBXSX76DAZFHHTUYMUGG';
-    this.keypair = Keypair.fromSecret(secret);
+    const secret = secretKey || process.env.STELLAR_AGENT_SECRET_KEY;
+    if (secret) {
+      this.keypair = Keypair.fromSecret(secret);
+    } else {
+      console.warn('[MCP] STELLAR_AGENT_SECRET_KEY not set. Using ephemeral keypair.');
+      this.keypair = Keypair.random();
+    }
   }
 
   async listServices() {

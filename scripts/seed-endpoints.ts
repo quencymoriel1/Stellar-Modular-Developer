@@ -4,7 +4,11 @@ import crypto from 'crypto';
 const RPC_URL = process.env.STELLAR_RPC_URL || 'https://soroban-testnet.stellar.org';
 const NETWORK_PASSPHRASE = process.env.STELLAR_NETWORK_PASSPHRASE || 'Test SDF Network ; September 2015';
 const CONTRACT_ID = process.env.STELLAR_MODULAR_CONTRACT_ID || 'CAQNUJ7CNCRDSVTE6QY2WRHP6W3ZVAYE4WRYVFTYE6BGXPPJ2WG4RRND';
-const SECRET_KEY = process.env.STELLAR_DEPLOYER_SECRET_KEY || 'SCZEAKU3JHHO6MFEUYVDRD35367FXUP5GPF4DBXSX76DAZFHHTUYMUGG';
+const SECRET_KEY = process.env.STELLAR_DEPLOYER_SECRET_KEY;
+if (!SECRET_KEY) {
+  console.error('Error: STELLAR_DEPLOYER_SECRET_KEY environment variable is required.');
+  process.exit(1);
+}
 const NATIVE_SAC = process.env.STELLAR_NATIVE_SAC_ID || 'CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC';
 
 async function seed() {

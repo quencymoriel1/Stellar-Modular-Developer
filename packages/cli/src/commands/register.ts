@@ -12,7 +12,11 @@ export async function registerCommand(options: any) {
   const name = options.name || 'Sample Monetized API';
   const price = options.price || '0.01';
   const asset = options.asset || 'XLM';
-  const secretKey = options.secret || process.env.STELLAR_DEPLOYER_SECRET_KEY || 'SCZEAKU3JHHO6MFEUYVDRD35367FXUP5GPF4DBXSX76DAZFHHTUYMUGG';
+  const secretKey = options.secret || process.env.STELLAR_DEPLOYER_SECRET_KEY;
+  if (!secretKey) {
+    console.error(chalk.red('Error: Please provide a secret key using --secret or set STELLAR_DEPLOYER_SECRET_KEY in your environment.'));
+    process.exit(1);
+  }
 
   const keypair = Keypair.fromSecret(secretKey);
   const tokenAddress = asset === 'USDC' ? STELLAR_CONFIG.TESTNET.testnetUsdc : STELLAR_CONFIG.TESTNET.nativeSac;

@@ -16,11 +16,27 @@ export const NETWORK_PASSPHRASE = 'Test SDF Network ; September 2015';
 export const NATIVE_SAC = 'CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC';
 export const TESTNET_USDC = 'CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWUIE3USSTHZX5COQN4';
 
-// Default funded deployer account available for 1-click testnet testing
-export const DEMO_DEV_ACCOUNT = {
-  publicKey: 'GCBZC5TOFMEZ6WXL5TDXAMKP7J5RIVHKYBMPHOYX6WR55UXBCLASC4DY',
-  secretKey: 'SCZEAKU3JHHO6MFEUYVDRD35367FXUP5GPF4DBXSX76DAZFHHTUYMUGG',
-};
+function getDemoDevAccount(): { publicKey: string; secretKey: string } {
+  try {
+    const storageKey = 'stellar_modular_dev_key';
+    const existing = typeof window !== 'undefined' ? localStorage.getItem(storageKey) : null;
+    if (existing) {
+      const kp = Keypair.fromSecret(existing);
+      return { publicKey: kp.publicKey(), secretKey: kp.secret() };
+    }
+    const kp = Keypair.random();
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(storageKey, kp.secret());
+    }
+    return { publicKey: kp.publicKey(), secretKey: kp.secret() };
+  } catch {
+    const kp = Keypair.random();
+    return { publicKey: kp.publicKey(), secretKey: kp.secret() };
+  }
+}
+
+// Ephemeral browser-scoped developer account for 1-click testnet testing
+export const DEMO_DEV_ACCOUNT = getDemoDevAccount();
 
 export async function fetchAccountBalances(address: string): Promise<{ xlm: string; usdc: string }> {
   try {
