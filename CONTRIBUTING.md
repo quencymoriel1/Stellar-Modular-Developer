@@ -98,11 +98,20 @@ We follow standard Conventional Commits:
    git checkout -b feature/my-new-feature
    ```
 2. Commit your changes with clear messages.
-3. Verify all tests pass:
+3. Verify all tests pass locally:
    ```bash
    cargo test --manifest-path contracts/modular_developer/Cargo.toml
+   npm run build
    ```
-4. Push to your branch and open a Pull Request against `main`.
+4. Push to your branch and open a Pull Request against `main`. Automated GitHub Actions CI will validate contract tests, TypeScript compilation, and monorepo linting.
+
+---
+
+## Issue Templates & Bug Reports
+
+Before opening a new issue, please search existing issues to avoid duplicates. When opening an issue, choose from the available templates:
+- **Bug Report**: For reproducible bugs, contract execution issues, or proxy challenges.
+- **Feature Request**: For new capabilities, SDK language additions, or protocol enhancements.
 
 ---
 

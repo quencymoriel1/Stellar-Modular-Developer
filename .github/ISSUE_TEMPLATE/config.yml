@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Stellar Community Discord
+    url: https://discord.gg/stellar
+    about: Ask questions and connect with developers in the official Stellar developer Discord.
+  - name: Stellar Soroban Docs
+    url: https://developers.stellar.org/docs
+    about: Official documentation for building smart contracts on Stellar.

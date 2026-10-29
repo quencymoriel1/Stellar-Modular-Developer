@@ -4,10 +4,11 @@
 
 [![Stellar](https://img.shields.io/badge/Stellar-Soroban_v22-08B5E5?logo=stellar&logoColor=white)](https://stellar.org)
 [![Testnet: Deployed](https://img.shields.io/badge/Testnet-Contract_Deployed-00F0FF?logo=target)](https://stellar.expert/explorer/testnet/contract/CAQNUJ7CNCRDSVTE6QY2WRHP6W3ZVAYE4WRYVFTYE6BGXPPJ2WG4RRND)
+[![CI](https://github.com/quencymoriel1/Stellar-Modular-Developer/actions/workflows/ci.yml/badge.svg)](https://github.com/quencymoriel1/Stellar-Modular-Developer/actions/workflows/ci.yml)
 [![Vercel: Ready](https://img.shields.io/badge/Vercel-Deployment_Ready-000000?logo=vercel&logoColor=white)](https://vercel.com)
 [![Rust: 2021](https://img.shields.io/badge/Rust-1.98+-DEA584?logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 ---
 
